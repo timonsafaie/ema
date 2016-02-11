@@ -1,0 +1,1162 @@
+/* The MathX Chrome Extension 					*/
+/* background.js - styling for the MathX Tool 	*/
+/* Authored by Timon Safaie 					*/
+/* All rights reserved under Demonstranda, Inc. */
+
+/* Chrome Extension */
+#mathx-chrome-box {
+	width: 620px;
+	min-height: 150px;
+	background-color: rgb(245, 245, 245);
+	position:absolute;
+	z-index: 800;
+	/* top: 120px; */
+    top: 45%;
+	right: 0px; /* 310px; */
+    /*
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0 ,-50%);
+    -ms-transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    */
+	float: right;
+	font-family:'Source Code Pro Light', sans-serif; /* 'Deja Vu Sans ExtraLight', sans-serif; */
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(0,0,0,0.8);
+    -webkit-font-smoothing: antialiased;
+            font-smoothing: antialiased;
+	/* Zoom Effect */
+	-webkit-transition: -webkit-transform 0.1s linear 0.3s;
+	   -moz-transition: -moz-transform 0.1s linear 0.3s;
+	    -ms-transition: -ms-transform 0.1s linear 0.3s;
+	     -o-transition: -o-transform 0.1s linear 0.3s;
+	        transition: transform 0.1s linear 0.3s;
+    display: none;
+    padding: 0;
+    cursor: move;
+}
+/* History and subCSS */
+#mathx-chrome-history {
+	width: 300px;
+	height: 100%;
+	margin-top: 120px;
+	background-color: black; /* rgb(245,245,245); */
+	position: fixed;
+	z-index: 800;
+	float: right;
+	right: 0;
+    color: #C9C9C9;
+    font: normal 13px arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+            font-smoothing: antialiased;
+    /* overflow: hidden; */
+    overflow: auto;
+}
+#mathx-chrome-history::-webkit-scrollbar {
+    width: 10px;
+    /*display: none;*/
+}
+/*
+#mathx-chrome-history::-webkit-scrollbar:window-inactive  {
+    display: none;
+}
+*/
+/* Header and Minimize */
+#mathx-chrome-history-header {
+    background-color: rgb(245, 245, 245);
+    color: rgba(0,0,0,0.8);
+    font-family: 'Source Code Pro Light', sans-serif;
+    font-size: 14px;
+    padding-top: 10px;
+    clear: both;
+    position: fixed;
+    width: 300px;
+    height: 30px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    z-index: 10;
+    /*
+    -webkit-box-shadow: 0 4px 4px -2px rgba(0,0,0,0.2);
+       -moz-box-shadow: 0 4px 4px -2px rgba(0,0,0,0.2);
+        -ms-box-shadow: 0 4px 4px -2px rgba(0,0,0,0.2);
+         -o-box-shadow: 0 4px 4px -2px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 4px -2px rgba(0,0,0,0.2);
+    */
+}
+#mathx-chrome-history-header-label {
+    float: left;
+    padding-left: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 16px;
+}
+#mathx-chrome-history-minimize {
+    float: right;
+    font-weight: 900;
+    margin-right: 10px;
+    cursor: pointer;
+    width: 15px;
+    height: 20px;
+    text-align: center;
+    display: none;
+}
+.mathx-chrome-history-minimized {
+    height: 40px !important;
+    bottom: 0px;
+}
+/*
+#mathx-chrome-history-minimize:hover {
+    color: rgb(213, 31, 38);
+    background-color: rgba(0,0,0,0.1);
+}*/
+/*
+#mathx-chrome-box:hover,
+#mathx-chrome-box:active
+{
+	-webkit-transform: scale(1.1);
+	   -moz-transform: scale(1.1);
+	    -ms-transform: scale(1.1);
+		    transform: scale(1.1);
+}*/
+/*
+#mathx-chrome-history-container {
+    position: absolute;
+} */
+#mathx-chrome-particles-js {
+  height:100%;
+  background-color: black;
+  /* background:#b61924; */
+  opacity: 0.6;
+}
+#particles-js canvas{
+	display:inline-block;
+	vertical-align:bottom;
+}
+#mathx-chrome-history-container {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+}
+#mathx-chrome-history-logo {
+    width: 1px;
+    height: 40px;
+    font-size: 30px; /* 40px */
+    font-weight: 100;
+    /* line-height: 50px; */
+    padding-top: 10px;
+    letter-spacing: 5px;
+    text-align: center; /* left */
+    -webkit-font-smoothing: antialiased;
+    color: rgba(255,255,255,0.85);
+    margin: 0 auto 0 auto;
+    background-color: /* particles red #b61924; */ /* ex machina red */ rgba(213, 31, 38, 0.75); /* red; */
+    cursor: default;
+    -webkit-border-radius: 2px;
+       -moz-border-radius: 2px;
+        -ms-border-radius: 2px;
+            border-radius: 2px;
+}
+#mathx-chrome-history-logo-text {
+    vertical-align: middle;
+    text-transform: lowercase;
+    font-family: 'Arkitech', sans-serif; /* 'Orbitron', sans-serif; */ 
+    /* padding-left: 21px; */
+    display: none;
+}
+#mathx-chrome-history-poweredby {
+    position: absolute;
+    top: 37%;
+    width: 300px;
+    text-align: center;
+    color: white;
+    font-family: arial, sans-serif;
+    -webkit-font-smooting: antialiased;
+    font-size: 11px;
+    height: 16px;
+    letter-spacing: 5px;
+    word-spacing: 8px;
+    text-transform: uppercase;
+    display: none;
+}
+/* Email */
+#mathx-chrome-email-container {
+    /* margin-top: 40px; */
+    position: absolute;
+    top: 43%;
+    width: 100%;
+}
+.mathx-chrome-input-container {
+    margin-top: 20px;
+}
+#mathx-chrome-email-input-container {
+    height: 20px;
+    width: 100%;
+}
+.mathx-chrome-input-position-2 {
+    /*opacity: 0.7;*/
+    /* margin-top: 20px; */
+    display: none;
+}
+#mathx-chrome-lastname::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.6); 
+}
+#mathx-chrome-lastname:focus::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 1);
+}
+.mathx-chrome-input-position-3 {
+    /* opacity: 0.4; */
+    /* margin-top: 20px; */
+    display: none;
+}
+/*
+.mathx-chrome-input-position-3 input::-webkit-input-placeholder {
+    font-size: 10px;
+}*/
+/* Input Line */
+.mathx-chrome-underline {
+    width: 10px; /* 230px */
+    height: 10px;
+    margin: 5px auto 0 auto;
+}
+.mathx-chrome-line {
+    height: 1px;
+    width: 0px;  /* 220px */ 
+    display: inline-block;
+    background-color: white;
+    color: white;
+    vertical-align: baseline;
+    float:left;
+    margin-top: 2px;
+}
+.mathx-chrome-endpoint {
+    float:left;
+    display: none; /* inline-block; */
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+            border-radius: 4px;
+    background-color: white;
+    width: 4px;
+    height: 4px;
+}
+.mathx-chrome-endpoint-right {
+    margin-left: -4px;
+}
+/*
+.mathx-chrome-underline-stretch-1 {
+    width: 10px; 
+    height: 10px;
+    margin: 5px auto 0 auto;
+    display: none;
+}
+.mathx-chrome-line-stretch-1 {
+    height: 1px;
+    width: 0px;  
+    display: inline-block;
+    background-color: white;
+    color: white;
+    vertical-align: baseline;
+    float:left;
+    margin-top: 2px;
+}*/
+.mathx-chrome-underline-stretch-2 {
+    width: 100%; /* 230px */
+    height: 10px;
+    display: none;
+}
+.mathx-chrome-line-stretch-2 {
+    height: 1px;
+    width: 250px;  /* 220px */ 
+    display: inline-block;
+    background-color: white;
+    color: white;
+    vertical-align: baseline;
+    /* opacity: 0.7; */
+    float:left;
+    margin-top: 2px;
+}
+.mathx-chrome-underline-stretch-3 {
+    width: 100%; /* 230px */
+    height: 10px;
+    display: none;
+}
+.mathx-chrome-line-stretch-3 {
+    height: 1px;
+    width: 230px;  /* 220px */ 
+    display: inline-block;
+    background-color: white;
+    color: white;
+    vertical-align: baseline;
+    /* opacity: 0.5; */
+    float:left;
+    margin-top: 2px;
+}
+#mathx-chrome-email {
+   display: none;
+}
+#mathx-chrome-history input {
+    background: none;
+    border: none;
+    color: white;
+    font-family: arial, sans-serif;
+    -webkit-font-smooting: antialiased;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    width: 300px; /* 100%; */
+    text-align: center;
+}
+#mathx-chrome-history input:hover::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+#mathx-chrome-history input::-webkit-input-placeholder {
+	text-transform: uppercase;
+    color: #C9C9C9;
+    /* font-family: 'Open Sans Condensed', sans-serif; */
+    letter-spacing: 3px;
+    transition: color 0.1s linear 0.2s;
+    -webkit-transition: color 0.1s linear 0.2s;
+    -moz-transition: color 0.1s linear 0.2s;
+    -ms-transition: color 0.1s linear 0.2s;
+}
+
+#mathx-chrome-history input:focus::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+#mathx-chrome-history *:focus {
+    outline: 0;
+}
+/********** Second input ***********/
+.mathx-chrome-input {
+    background: none;
+    border: none;
+    color: white;
+    font-family: arial, sans-serif;
+    -webkit-font-smooting: antialiased;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    width: 300px; /* 100%; */
+    text-align: center;
+}
+.mathx-chrome-input:hover::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 1);
+}
+.mathx-chrome-input::-webkit-input-placeholder {
+	text-transform: uppercase;
+    /* color: #C9C9C9; */
+    color: rgba(255, 255, 255, 0.6);
+    /* font-family: 'Open Sans Condensed', sans-serif; */
+    letter-spacing: 3px;
+    transition: color 0.1s linear 0.2s;
+    -webkit-transition: color 0.1s linear 0.2s;
+    -moz-transition: color 0.1s linear 0.2s;
+    -ms-transition: color 0.1s linear 0.2s;
+}
+.mathx-chrome-input input:focus::-webkit-input-placeholder {
+    color: red;
+}
+/* Welcome */
+#mathx-chrome-welcome-container {
+    width: 100%;
+    height: 30px;
+}
+#mathx-chrome-welcome {
+    display: none;
+    font: 100 20px 'Source Code Pro Light', sans-serif; /* 'Deja Vu Sans ExtraLight', sans-serif; */
+    letter-spacing: 3px;
+    text-align: center;
+    width: 100%;
+    color: white;
+    text-transform: uppercase;
+}
+
+
+
+
+
+
+@keyframes mathx-chrome-pulse
+{
+ 0%   { color: #C9C9C9;}
+ 50%  { color: rgba(255,255,255,0.6);}
+ 100% { color: rgba(255,255,255,0.4);}
+}
+
+@-webkit-keyframes mathx-chrome-pulse
+{
+ 0%   { color: #C9C9C9;}
+ 50%  { color: rgba(255,255,255,0.6);}
+ 100% { color: rgba(255,255,255,0.4);}
+}
+
+/* Loading Animation TOBE USED LATER */
+span[class*="mathx-chrome-loading-"] {
+	height: 4px; width: 4px;
+	background: #000;
+	display: inline-block;
+	margin: 12px 2px;
+	
+	border-radius: 100%;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+	
+	-webkit-animation: mathx-chrome-loader 4s infinite;
+	-webkit-animation-timing-function: cubic-bezier(0.030, 0.615, 0.995, 0.415);
+	-webkit-animation-fill-mode: both;
+	-moz-animation: mathx-chrome-loader 4s infinite;
+	-moz-animation-timing-function: cubic-bezier(0.030, 0.615, 0.995, 0.415);
+	-moz-animation-fill-mode: both;
+	-ms-animation: mathx-chrome-loader 4s infinite;
+	-ms-animation-timing-function: cubic-bezier(0.030, 0.615, 0.995, 0.415);
+	-ms-animation-fill-mode: both;
+	animation: mathx-chrome-loader 4s infinite;
+	animation-timing-function: cubic-bezier(0.030, 0.615, 0.995, 0.415);
+	animation-fill-mode: both;
+}
+/*
+span.mathx-chrome-loader-1 {-webkit-animation-delay: 1s;animation-delay: 1s;-ms-animation-delay: 1s;-moz-animation-delay: 1s;}
+span.mathx-chrome-loader-2 {-webkit-animation-delay: 0.8s;animation-delay: 0.8s;-ms-animation-delay: 0.8s;-moz-animation-delay: 0.8s;}
+span.mathx-chrome-loader-3 {-webkit-animation-delay: 0.6s;animation-delay: 0.6s;-ms-animation-delay: 0.6s;-moz-animation-delay: 0.6s;}
+span.mathx-chrome-loader-4 {-webkit-animation-delay: 0.4s;animation-delay: 0.4s;-ms-animation-delay: 0.4s;-moz-animation-delay: 0.4s;}
+span.mathx-chrome-loader-5 {-webkit-animation-delay: 0.2s;animation-delay: 0.2s;-ms-animation-delay: 0.2s;-moz-animation-delay: 0.2s;}
+span.mathx-chrome-loader-6 {-webkit-animation-delay: 0;animation-delay: 0;-ms-animation-delay: 0;-moz-animation-delay: 0;}
+
+@-webkit-keyframes mathx-chrome-loader {
+	0% {-webkit-transform: translateX(-30px); opacity: 0;}
+	25% {opacity: 1;}
+	50% {-webkit-transform: translateX(30px); opacity: 0;}
+	100% {opacity: 0;}
+}
+
+@-moz-keyframes mathx-chrome-loader {
+	0% {-moz-transform: translateX(-30px); opacity: 0;}
+	25% {opacity: 1;}
+	50% {-moz-transform: translateX(30px); opacity: 0;}
+	100% {opacity: 0;}
+}
+
+@-keyframes mathx-chrome-loader {
+	0% {-transform: translateX(-30px); opacity: 0;}
+	25% {opacity: 1;}
+	50% {-transform: translateX(30px); opacity: 0;}
+	100% {opacity: 0;}
+}
+
+@-ms-keyframes mathx-chrome-loader {
+	0% {-ms-transform: translateX(-30px); opacity: 0;}
+	25% {opacity: 1;}
+	50% {-ms-transform: translateX(30px); opacity: 0;}
+	100% {opacity: 0;}
+}
+
+*/
+
+
+
+
+
+
+/* Box Shadowing */
+.mathx-chrome-box-shadow{
+  -webkit-box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.4);
+  	 -moz-box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.4);
+  		  box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.4);
+}
+.mathx-chrome-bottom-edge-shadow {
+  -webkit-box-shadow: 0 8px 6px -6px rgba(0,0,0,0.4);
+     -moz-box-shadow: 0 8px 6px -6px rgba(0,0,0,0.4);
+          box-shadow: 0 8px 6px -6px rgba(0,0,0,0.4);
+}
+/* Text Effect */
+#mathx-chrome-header {
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 200px;
+  margin: 0 auto 0 auto;
+  cursor: default;
+  padding: 0;
+  /* padding-left: 25px; */
+  /* font: normal 60px/1 'Age', sans-serif; */
+  font: normal 60px/1 'Bitsumishi', sans-serif;
+  color: rgba(255,255,255,1);
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  text-shadow: 3px 3px 0 #CCC, 4px 4px 0 #CCC, 5px 5px 0 #CCC, 6px 6px 0 #CCC, 7px 7px 0 #CCC, 8px 8px 0 #CCC, 9px 9px 0 #CCC, 10px 10px 0 #CCC, 11px 11px 0 #CCC, 12px 12px 0 #CCC, 13px 13px 0 #CCC, 14px 14px 0 #CCC, 15px 15px 0 #CCC, 16px 16px 0 #CCC, 17px 17px 0 #CCC, 18px 18px 0 #CCC, 19px 19px 0 #CCC, 20px 20px 0 #CCC; 
+  /*
+  text-shadow: 3px 3px 0 #0199d9 , 4px 4px 0 #0199d9 , 5px 5px 0 #0199d9 , 6px 6px 0 #0199d9 , 7px 7px 0 #0199d9 , 8px 8px 0 #0199d9 , 9px 9px 0 #0199d9 , 10px 10px 0 #0199d9 , 11px 11px 0 #0199d9 , 12px 12px 0 #0199d9 , 13px 13px 0 #0199d9 , 14px 14px 0 #0199d9 , 15px 15px 0 #0199d9 , 16px 16px 0 #0199d9 , 17px 17px 0 #0199d9 , 18px 18px 0 #0199d9 , 19px 19px 0 #0199d9 , 20px 20px 0 #0199d9 ; */
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  -webkit-transform: none;
+  transform: none;
+  -webkit-transform-origin: 50% 50% 0;
+  transform-origin: 50% 50% 0;
+}
+.mathx-chrome-header-active {
+    text-shadow: -3px 3px 0 #CCC, -4px 4px 0 #CCC, -5px 5px 0 #CCC, -6px 6px 0 #CCC, -7px 7px 0 #CCC, -8px 8px 0 #CCC, -9px 9px 0 #CCC, -10px 10px 0 #CCC, -11px 11px 0 #CCC, -12px 12px 0 #CCC, -13px 13px 0 #CCC, -14px 14px 0 #CCC, -15px 15px 0 #CCC, -16px 16px 0 #CCC, -17px 17px 0 #CCC, -18px 18px 0 #CCC, -19px 19px 0 #CCC, -20px 20px 0 #CCC;
+}
+#mathx-chrome-header-container {
+    width: 200px;
+    height: 60px;
+    margin: 0 auto 0 auto;
+}
+/* Title */
+.mathx-chrome-container {
+    padding-left: 10px;
+    padding-right: 10px;
+    clear: both;
+}
+#mathx-chrome-title-container {
+    margin-top: 20px;
+    height: 20px;
+}
+#mathx-chrome-entry-msg-container {
+    margin-top: 60px;
+}
+#mathx-chrome-entry-container {
+    margin-top: 15px;
+}
+#mathx-chrome-forgot-password-container {
+    margin-top: 10px;
+}
+#mathx-chrome-alternative-container {
+    margin-top: 40px;
+}
+#mathx-chrome-footer-container
+{
+    margin-top: 40px;
+}
+#mathx-chrome-title {
+    float: left;
+    text-align: left;
+}
+#mathx-chrome-contact {
+    float:right;
+    text-align: right;
+}
+#mathx-chrome-forgot-password, .mathx-chrome-entry-msg {
+    width: 150px;
+    margin: 0 auto 0 auto;
+    text-align: center;
+}
+#mathx-chrome-alternative-button-container {
+    width: 200px;
+    margin: 10px auto 0 auto;
+}
+.mathx-chrome-link,
+.mathx-chrome link:visited{
+    color: red;
+    cursor: pointer;
+    text-decoration-color: none;
+    -webkit-transition: color 0.1s linear 0.2s;
+       -moz-transition: color 0.1s linear 0.2s;
+        -ms-transition: color 0.1s linear 0.2s;
+         -o-transition: color 0.1s linear 0.2s;
+            transition: color 0.1s linear 0.2s;
+}
+/* MathX Textbox */
+.mathx-chrome-textbox-frame-top {
+    padding:0;
+    margin: 0;
+    width: 100%;
+    height: 20px;
+}
+.mathx-chrome-textbox-frame-left {
+    float: left;
+    margin-left: 30px;
+}
+.mathx-chrome-textbox-frame-right {
+    float: right;
+    margin-right: -5px;
+}
+.mathx-chrome-textbox-frame-bottom {
+    margin-top: -17px;
+    width: 10px;
+    float: left;
+}
+.mathx-chrome-textbox-frame-bottom-left {
+    float: left;
+}
+.mathx-chrome-textbox-frame-bottom-right {
+    float: right;
+}
+.mathx-chrome-textbox-frame {
+    display: none;
+}
+.mathx-chrome-textbox {
+    border-bottom: 1px solid rgba(211, 51, 47, 0.5); /* rgba(211, 51, 47, 0.8); *//* rgba(0, 0 , 0, 0.8); */
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -ms-border-radius: 0;
+    -moz-border-radius: 0;
+    color: rgba(0, 0 , 0, 0.8);
+    font-size: 16px;
+    line-height: 16px;
+    width: 0px; /* 280px; */
+    float: left;
+    margin-left: 35px;
+    /* margin: 10px auto 0 auto; */
+    text-align: left;
+    cursor: text;
+}
+.mathx-chrome-textbox:focus {
+    outline: none;
+}
+#mathx-chrome-box-header {
+    width: 100%;
+    padding-top: 10px;
+    clear: both;
+}
+#mathx-chrome-box-header-left {
+    float: left;
+    padding-left: 10px;
+}
+#mathx-chrome-box-header-right {
+    float: right;
+    padding-right: 10px;
+}
+#mathx-chrome-box-minimize {
+    cursor: pointer;
+    float:left;
+    width: 15px;
+    height: 20px;
+    margin-right: 10px;
+    font-weight: 900;
+    text-align: center;
+}
+.mathx-chrome-header-button {
+    width: 15px;
+    text-align: center;
+    height: 20px;
+    cursor: pointer;
+}
+.mathx-chrome-header-button:hover {
+    color: rgb(213, 31, 38);
+    background-color: rgba(0,0,0,0.1);
+}
+#mathx-chrome-box-menu {
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 900;
+    float: right;
+}
+#mathx-chrome-box-menu-container {
+    position:absolute;
+    top: 30px;
+    right: 10px;
+    background: rgb(245, 245, 245);
+    padding: 10px;
+    display: none;
+}
+.mathx-chrome-box-menu-option {
+    text-align: center;
+    color: rgba(211, 51, 47, 0.8);
+    font: normal 14px 'Source Code Pro Light', sans-serif;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+}
+.mathx-chrome-box-menu-option a,
+.mathx-chrome-box-menu-option a:hover,
+.mathx-chrome-box-menu-option a:visited,
+{
+    text-align: center;
+    text-decoration: none;
+    color: rgba(211, 51, 47, 0.8) !important;
+    font: normal 14px 'Source Code Pro Light', sans-serif;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+}
+#mathx-chrome-box-body {
+    width: 100%;
+    clear:both;
+}
+#mathx-chrome-box-data {
+    margin-top: 10px;
+    padding-left: 10px;
+    float: left;
+}
+#mathx-chrome-box-version {
+    font-size: 18px;
+    font-weight: 100;
+    font-family: 'Source Code Pro Light', sans-serif;
+    color: rgba(0,0,0,0.8);
+    letter-spacing: 3px;
+    padding: 0;
+    margin: 0;
+}
+.mathx-chrome-uppercase {
+    text-transform: uppercase;
+}
+.mathx-chrome-box-keys,
+.mathx-chrome-box-values {
+    float:left;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 11px;
+    letter-spacing: 1.7px;
+}
+.mathx-chrome-box-keys {
+    text-transform: uppercase;
+}
+.mathx-chrome-box-values {
+    margin-left: 20px;
+    text-transform: uppercase;
+}
+.mathx-chrome-box-keys > li,
+.mathx-chrome-box-values > li {
+    padding-top: 8px;
+}
+#mathx-chrome-box-textbox-container {
+    float: left;
+    padding-left: 40px;
+    padding-top: 0px /* 15px; */
+}
+.mathx-chrome-caret {
+    float: left; 
+    /*margin-top: -25px;*/
+    font: 500 18px 'Source Code Pro Light', sans-serif;
+}
+#mathx-chrome-box-textbox-caret {
+    margin-top: 0px;
+}
+#mathx-chrome-box-textbox-caret-container {
+    display: none;
+    float: left;
+}
+#mathx-chrome-box-textbox-clear {
+    float: right;
+    margin-top: -28px;
+}
+.mathx-chrome-button {
+    color: rgba(211, 51, 47, 0.8);
+    font: normal 20px 'Source Code Pro Light', sans-serif;
+    clear:both;
+    cursor: pointer;
+}
+.mathx-chrome-button div {
+    float: left;
+}
+.mathx-chrome-button-open {
+    text-align: right;
+    position: absolute;
+    margin-left: 15px; /* 10px; */
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    display: none; 
+    /* display:none; */
+}
+.mathx-chrome-button-close {
+    text-align: left;
+    position: absolute;
+    margin-left: 25px; /* 30px; */
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    display: none; 
+    /* display: none; */
+}
+.mathx-chrome-button-val {
+    text-align: center; 
+    position: absolute;
+    margin-left: 20px;
+    margin-top: 1px;
+    display: none; 
+    text-transform: uppercase;
+    /* display: none; */
+}
+/* Box Footer */
+#mathx-chrome-box-footer {
+    width: 100%;
+    clear:both;
+}
+#mathx-chrome-box-coords {
+    padding-left: 10px;
+    padding-top: 20px;
+    display: none;
+}
+#mathx-chrome-box-footer ul {
+    color: rgba(0,0,0,1);
+}
+#mathx-chrome-box-footer li {
+    float: left;
+}
+#mathx-chrome-box-x-coord {
+    padding-left: 0px;
+}
+#mathx-chrome-box-x-coord-value,
+#mathx-chrome-box-y-coord-value {
+    padding-left: 20px;
+    width: 60px;
+}
+.mathx-chrome-box-coord {
+    float: left;
+    font: normal 11px 'Source Code Pro Light', sans-serif;
+    letter-spacing: 1.7px;
+    list-style-type: none;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+/* Box Minimized */
+#mathx-chrome-box-minimized {
+    position: fixed;
+    bottom: 0px;
+    right: 310px;
+    width: 300px;
+    height: 40px;
+    display: none;
+    background-color: rgb(245,245,245);
+    z-index: 30;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+}
+#mathx-chrome-box-minimized-header {
+    float: left;
+    margin-left: 10px;
+}
+#mathx-chrome-box-minimized-header span {
+    font: 100 14px 'Source Code Pro Light', sans-serif;
+    color: rgba(0,0,0,0.8);
+    letter-spacing: 3px;
+    line-height: 40px;
+}
+#mathx-chrome-box-minimized-minimize {
+    float: right;
+    margin-right: 10px;
+    font:900 14px 'Source Code Pro Light', sans-serif;
+    margin-top: 10px;
+    color: rgba(0,0,0,0.8);
+    -webkit-font-smoothing: antialiased;
+}
+/* MathX Box Menu */
+#mathx-chrome-box-menu-box-container {
+    float: right;
+}
+#mathx-chrome-box-menu-box {
+    width: 120px;
+    background-color: rgb(245, 245, 245);
+    text-align: center;
+    color: rgba(211, 51, 47, 0.8);
+}
+/* Onboarding */
+#mathx-chrome-onboarding-bg {
+    position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	z-index:900;
+	-moz-opacity: 0.8;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+#mathx-chrome-onboarding {
+    height: 200px;
+    width: 300px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 10px;
+    font-family:'Source Code Pro Light', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(0,0,0,0.8);
+    background-color: rgb(245, 245, 245);
+    z-index: 999;
+}
+.mathx-chrome-ema-message {
+    width: 250px;
+    margin: 150px auto 0 auto;
+    list-style-type: none;
+    padding: 0px;
+    display: none;
+}
+.mathx-chrome-ema-message li {
+    float: left;
+    text-align: left;
+}
+.mathx-chrome-ema-caret {
+    width: 30px;
+}
+.mathx-chrome-ema-text {
+    width: 220px;
+}
+.mathx-chrome-ema-h3 {
+    font-size: 16px;
+    font-weight: 900;
+}
+#mathx-chrome-onboarding-buttons {
+    width: 100%;
+}
+.introjs-overlay {
+    background: black;
+    opacity: 0.8;
+}
+.introjs-tooltip {
+    background: rgb(245, 245, 245);
+}
+.introjs-tooltiptext {
+    font-family:'Source Code Pro Light', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(0,0,0,0.8);
+}
+.introjs-tooltiptext p {
+    width: 260px;
+    padding-left: 20px;
+}
+.introjs-tooltiptext .mathx-chrome-center-paragraph { /* p:last-child { */
+    text-align: center;
+}
+.introjs-button {
+    background: none;
+    border: none;
+    font-family:'Source Code Pro Light', sans-serif;
+    font-size: 12px !important;
+    font-weight: 500;
+    color: rgba(211, 51, 47, 0.8) !important;
+}
+.introjs-button:hover {
+    border:none;
+    box-shadow: none;
+    color: rgba(211, 51, 47, 1) !important;
+}
+.introjs-disabled {
+    display: none;
+}
+.introjs-helperNumberLayer {
+    font-family: 'Source Code Pro Light', sans-serif;
+}
+/* History */
+/* Images */
+#mathx-chrome-history-images-container {
+    color: rgba(0,0,0,0.8);
+    font: normal 11px 'Source Code Pro Light', sans-serif;
+    letter-spacing: 1.7px;
+    margin-top: 25px;
+}
+.mathx-chrome-history-equation {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.mathx-chrome-history-equation:hover .mathx-chrome-latex-button {
+    display: block;
+}
+.mathx-chrome-history-equation:hover .mathx-chrome-history-font-input {
+    border-bottom: 1px solid rgba(211, 51, 47, 0.5) !important;
+}
+.mathx-chrome-history-entry-time-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+.mathx-chrome-history-entry-time {
+    float: left;
+}
+.mathx-chrome-history-entry-keys,
+.mathx-chrome-history-entry-values {
+    float:left;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 9px;
+    letter-spacing: 1.7px;
+}
+.mathx-chrome-history-entry-keys {
+    text-transform: uppercase;
+    margin-left: 10px;
+}
+.mathx-chrome-history-entry-values {
+    margin-left: 20px;
+    text-transform: uppercase;
+}
+.mathx-chrome-history-entry-keys > li,
+.mathx-chrome-history-entry-values > li {
+    padding-top: 8px;
+}
+.mathx-chrome-history-size-container {
+    float: right;
+    /*padding-top: 15px;*/
+    margin-right: 10px;
+}
+.mathx-chrome-history-font-input {
+    color: rgba(0,0,0,0.8) !important;
+    letter-spacing: 1.7px !important;
+    -webkit-font-smoothing: antialiased !important;
+    width: 18px !important;
+    font-size: 9px !important;
+    font-family: 'Source Code Pro Light', sans-serif !important;
+    line-height: 9px !important;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    -ms-border-radius: 0 !important;
+    -o-border-radius: 0 !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -ms-box-shadow: none !important;
+    -o-box-shadow: none !important;
+    border-bottom: 1px solid rgba(211, 51, 47, 0) !important;
+    text-align: center !important;
+}
+.mathx-chrome-history-image-row {
+    width: 100%;
+}
+.mathx-chrome-history-image-container {
+    opacity: 0.6;
+    margin: 0 auto 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    -webkit-transition: opacity 0 ease-out 0.2s;
+    -moz-transition: opacity 0 ease-out 0.2s;
+    -ms-transition: opacity 0 ease-out 0.2s;
+    transition: opacity 0 ease-out 0.2s;
+}
+.mathx-chrome-history-image-container:hover {
+    opacity: 0.8;
+}
+.mathx-chrome-history-image {
+    max-width: 300px;
+    height: auto;
+}
+.mathx-chrome-history-post-spacer {
+    width: 100%;
+    height: 200px;
+    background-color: none;
+    border: none;
+}
+/* Copy Latex Button */
+.mathx-chrome-latex-button-container {
+    width: 100%;
+    height: 15px;
+}
+.mathx-chrome-latex-button {
+    color: rgba(211, 51, 47, 0.8);
+    font: normal 11px 'Source Code Pro Light', sans-serif;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    width: 100px;
+    margin: 0 auto 0 auto;
+    display: none;
+    -webkit-transition: display 0.1s ease-out 0.2s;
+    -moz-transition: display 0.1s ease-out 0.2s;
+    -ms-transition: display 0.1s ease-out 0.2s;
+    transition: display 0.1s ease-out 0.2s;
+}
+.mathx-chrome-latex-button-element {
+    float: left;
+    position: absolute;
+}
+.mathx-chrome-latex-button-val {
+    margin-left: 10px;
+}
+.mathx-chrome-latex-button-close {
+    margin-left: 95px;
+}
+.mathx-chrome-latex-data {
+    display: none;
+}
+/* MathX Tailorization */
+.mm-container {
+    min-height: 20px !important;
+    padding: 0px !important;
+}
+.mathx-chrome-textbox > .mX-container {
+    border: none !important;
+    padding-left: 0px !important;
+    font-size: 18px !important;
+    font-weight: normal;
+}
+#aC-results {
+    -webkit-box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.4);
+  	 -moz-box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.4);
+  		  box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.4);
+}
+#aC-results .namerow,
+#aC-results .resultsrow,
+#aC-results .resultsnav,
+#aC-results .matrixbuilder,
+#aC-results .matrixsymbol {
+    background-color: /* rgba(213, 31, 38, 0.8)*/ rgb(245,245,245);
+}
+#aC-results .resultsrow > .symbol {
+    color: rgba(0,0,0,0.8);
+}
+#aC-results .resultsrow > .list-row-hover {
+    border-top: 3px solid rgba(211, 51, 47, 0.8);
+    color: rgb(213, 31, 38);
+    background-color: rgb(205,205,205);
+}
+/* #aC-results .search_results .list-row-hover, */
+#aC-results .search_results .selector-row-hover {
+    border-top: 1px solid rgba(211, 51, 47, 0.5);
+}
+#aC-results .resultsholder > .namerow,
+#aC-results .resnamematch,
+#aC-results .resultsnav {
+    color: rgba(0,0,0,0.8);
+    font-family: 'Source Code Pro Light', sans-serif;
+    font-weight: 300;
+}
+#aC-results .resultsholder > .namerow {
+    font-size: 11px;
+}
+#aC-results .resnamematch {
+    font-weight: 900;
+    color: rgb(213, 31, 38);
+}
+#aC-results .ac-inp {
+    background: rgba(0,0,0,0.2);
+}
+#aC-results .matrixbuilder {
+    color: rgba(0,0,0,0.8);
+    font-family: 'Source Code Pro Light', sans-serif;
+    font-weight: 300;
+    background-color: /* rgba(213, 31, 38, 0.8)*/ rgb(245,245,245) !important;
+}
+#aC-results .search_results,
+#aC-results .search-left,
+#aC-results .search-left_sec {
+    background-color: none !important;
+}
+#aC-results .matrixsymbol {
+    color: rgba(0,0,0,0.8);
+}
+#aC-results .selector-row-hover {
+    color: rgb(213, 31, 38);
+    background-color: rgb(205,205,205);
+}
+/* Useful addititives */
+.mathx-chrome-clear {
+    clear: both;
+}

@@ -1,0 +1,7 @@
+﻿/* @font-face kit by Fonts2u (http://www.fonts2u.com) */ 
+@font-face {
+	font-family:"Age";
+	src:url("Age.eot?") format("eot"),url("Age.woff") format("woff"),url("Age.ttf") format("truetype"),url("Age.svg#Age") format("svg");
+	font-weight:normal;
+	font-style:normal;
+}

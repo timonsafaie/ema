@@ -1,0 +1,67 @@
+{
+  "name": "EMA - A Math Equation Editor for Google Docs.",
+  "description": "A simple and intuitive equation editor that does not require coding or clicking.  Powered by MathX.", 
+  "version": "2.2.8",
+  "browser_action": {
+    "name": "EMA",
+	"default_title": "EMA\nPowered by MathX",
+    "icons": ["images/tab/off.png","images/tab/on.png"],
+    "default_icon": "images/tab/off.png"
+  },
+  "icons": { 
+  			"32": "images/logo/ema-setting.png",
+           	"48": "images/logo/ema-setting.png",
+          	"128": "images/logo/ema-setting.png" 
+			},
+  "permissions": [
+    "activeTab",
+	"tabs",
+    "storage",
+    "clipboardWrite",
+    "clipboardRead"
+  ],
+  "background": {
+    "scripts": ["background/background.js"],
+    "persistent": true
+  },
+  "content_scripts": [ {
+    "js":      [ 
+			    "js/jquery/jquery-1.11.1.min.js",
+				"js/jquery/jquery-ui.js",
+				"js/jquery/jquery.transit.min.js",
+				"js/html2canvas/build/html2canvas.js",
+				"js/canvas2image.js",
+				"js/base64.js",
+				"js/blur/blur.js",
+                "js/particles/particles.js",
+                "js/particles/stats.js",
+                "js/particles/nodes.js",
+                "js/introjs/intro.js",
+                "mathx/js/vars.js",
+                "mathx/js/db.js",
+                "mathx/js/autocomplete.js",
+                "mathx/js/main.js",
+				"mathx/js/cursor.js",
+                "mathx/js/menu.js",
+				"script/mxlscript.js"
+		       ],
+    "css":     [
+				"js/introjs/introjs.css",
+                "mathx/css/mathx.css",
+				"css/load.css",
+			    "css/background.css"
+		       ],
+    "matches": [ 
+				"http://*/*", "https://*/*"
+	       	   ],
+	"run_at": "document_start"
+  }],
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+  "web_accessible_resources": [
+   				"mathx/*",
+				"css/*",
+                "js/particles/*",
+				"images/*"
+  ],
+  "manifest_version": 2
+}

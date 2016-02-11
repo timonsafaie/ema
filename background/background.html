@@ -1,0 +1,80 @@
+<html>
+<head>
+<script src="js/oauth/oauth2.js"></script>
+<script src="js/oauth/google.js"></script>
+<script>
+// The MathX Chrome Extension
+// Authored by Timon Safaie
+// background.js - controls for launching the extension
+// All rights reserved under Demonstranda, Inc.
+
+var mxstatus = {};  // ON/OFF HashMap for each opened browser tab  
+
+// Called when the user clicks on the browser action.
+chrome.browserAction.onClicked.addListener(function(tab) {
+
+  // If First Load, run loading icon for awhile.
+  chrome.tabs.executeScript(tab.id, {file: "script/load.js"});
+  chrome.tabs.executeScript(tab.id, {file: "script/preload.js"});
+  
+  // See if there are any 'need to reload'
+  // messages coming in.
+  chrome.runtime.onMessage.addListener(
+  	function(request, sender, sendResponse) {
+    	mxstatus[tab.id] = request.message;
+		if (mxstatus[tab.id] == 'reload')
+			chrome.browserAction.setIcon({path: "images/tab/off.png", tabId:tab.id});
+  });
+ 
+ 
+ // Connect with content script.
+  // Ask for MathX status.
+  chrome.runtime.onConnect.addListener(function(port) {										
+  	console.assert(port.name == "mxstatus");
+  	port.onMessage.addListener(function(msg) {
+		mxstatus[tab.id] = msg.status;
+	});
+  });
+  
+  // If load fails, alert user to refresh page
+  chrome.tabs.executeScript(tab.id, {file: "script/reload.js"});
+  
+  // Load the content script
+  setTimeout(function() { 
+	  chrome.tabs.executeScript(tab.id, {file: "script/contentscript.js"});
+  }, 1000);
+  
+  // Finally, configure tab status
+  if ( (mxstatus[tab.id] != 'on') && (mxstatus[tab.id] != 'off') ) {
+	  // Turn ON MathX on first browser action
+	  mxstatus[tab.id] = 'on';
+	  chrome.browserAction.setIcon({path: "images/tab/on.png", tabId:tab.id});
+  } else {  // Now in the regular state of ON and OFF
+	// Change Chrome Tab Icon On and Off
+	if (mxstatus[tab.id]  == 'off') {  // Turn MathX ON
+		chrome.browserAction.setIcon({path: "images/tab/on.png", tabId:tab.id});
+		// Opens MathX
+		chrome.tabs.executeScript({
+			  code: 'mathxbar()'
+		});
+		mxstatus[tab.id] = 'on';  // Readies OFF-state
+	} else if (mxstatus[tab.id] == 'on') {  // Turn OFF MathX
+		chrome.browserAction.setIcon({path: "images/tab/off.png", tabId:tab.id});
+		// Closes MathX
+		chrome.tabs.executeScript({
+			  code: 'mathxbar()'
+		});
+		chrome.tabs.executeScript({
+			  code: '$(".mathx-loading").css("display","none")'
+		});
+		mxstatus[tab.id] = 'off';  // Readies ON-state
+	}  
+  }
+  
+  
+});
+</script>
+</head>
+<body>
+</body>
+</html>
